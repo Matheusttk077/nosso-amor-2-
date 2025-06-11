@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Nosso Amor</title>
+  <style>
+    body {
+      background: #fdf6f0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      color: #444;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0.2em;
+      color: #b85c38;
+    }
+    .fotos {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+    .fotos img {
+      max-width: 300px;
+      max-height: 300px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(184, 92, 56, 0.4);
+      object-fit: cover;
+    }
+    #contador {
+      font-size: 1.5em;
+      margin-top: 15px;
+      font-weight: 600;
+      color: #8b4a2e;
+    }
+    .mensagem {
+      font-size: 1.3em;
+      font-style: italic;
+      margin-top: 25px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #6d4a38;
+    }
+    audio {
+      margin-top: 30px;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Nosso Amor</h1>
+
+  <div class="fotos">
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Foto do casal 1" />
+    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80" alt="Foto do casal 2" />
+  </div>
+
+  <div id="contador">Calculando tempo juntos...</div>
+
+  <div class="mensagem">“O amor não conta os dias, faz os dias valerem.” ❤️</div>
+
+  <audio src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Lee_Rosevere/Touching_Down/Lee_Rosevere_-_04_-_Touching_Down.mp3" autoplay loop controls></audio>
+
+  <script>
+    const inicio = new Date("2018-06-11T00:00:00"); // coloque a data correta aqui
+
+    function atualizarContador() {
+      const agora = new Date();
+      let anos = agora.getFullYear() - inicio.getFullYear();
+      let meses = agora.getMonth() - inicio.getMonth();
+      let dias = agora.getDate() - inicio.getDate();
+
+      if (dias < 0) {
+        meses--;
+        dias += new Date(agora.getFullYear(), agora.getMonth(), 0).getDate();
+      }
+      if (meses < 0) {
+        anos--;
+        meses += 12;
+      }
+
+      document.getElementById('contador').textContent =
+        `${anos} anos, ${meses} meses e ${dias} dias juntos`;
+    }
+
+    atualizarContador();
+    setInterval(atualizarContador, 1000);
+  </script>
+
+</body>
+</html>
