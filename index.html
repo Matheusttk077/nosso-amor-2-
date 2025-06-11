@@ -21,6 +21,7 @@
       text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     }
 
+    /* Carrossel */
     .carrossel {
       position: relative;
       max-width: 400px;
@@ -67,16 +68,27 @@
       background: #9b2c5a;
     }
 
+    /* Contador */
     #contador {
       font-size: 1.3em;
       margin: 15px 0;
-      color: #9b2a5a;
+      color: #9b2c5a;
       font-weight: bold;
     }
 
+    /* Mensagem */
+    .mensagem {
+      font-size: 1.2em;
+      margin: 20px 10px;
+      color: #7d3c5c;
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    /* Player */
     .player {
       max-width: 300px;
-      margin: 25px auto 10px;
+      margin: 25px auto;
       border-radius: 10px;
       overflow: hidden;
       background: #f8d7e8;
@@ -89,20 +101,13 @@
       color: #c71585;
       font-size: 0.9em;
     }
-
-    .mensagem {
-      font-size: 1.2em;
-      margin: 20px 10px;
-      color: #7d3c5c;
-      line-height: 1.6;
-      font-style: italic;
-    }
   </style>
 </head>
 <body>
 
   <h1>Nosso Amor 💕</h1>
 
+  <!-- Carrossel -->
   <div class="carrossel">
     <div class="slides">
       <div class="slide"><img src="https://i.imgur.com/MFHL61N.webp" alt="Foto 1"></div>
@@ -122,78 +127,80 @@
     <button id="nextBtn">Próxima →</button>
   </div>
 
-  <div id="contador">Carregando...</div>
-
-  <!-- Player de Música acima da frase -->
+  <!-- Player de Música -->
   <div class="player">
     <audio id="musica" controls>
-      <source src="https://voca.ro/15vqHgy5ypNs" type="audio/mpeg">
+      <source src="https://seuusuario.github.io/seurepositorio/musica.mp3" type="audio/mpeg">
       Seu navegador não suporta áudio.
     </audio>
-    <p>Velha Infância – Tribalistas</p>
+    <p>Nome da música ❤️</p>
   </div>
 
+  <!-- Contador -->
+  <div id="contador">Carregando...</div>
+
+  <!-- Mensagem -->
   <div class="mensagem">
     "O amor não se vê com os olhos, mas com o coração. Cada dia ao seu lado é um presente."
   </div>
 
-  <script>
-    // Carrossel
-    const slides = document.querySelector('.slides');
-    const slideItems = document.querySelectorAll('.slide');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    let currentIndex = 0;
+<script>
+  // Carrossel
+  const slides = document.querySelector('.slides');
+  const slideItems = document.querySelectorAll('.slide');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  let currentIndex = 0;
 
-    function updateCarrossel() {
-      slides.style.transform = `translateX(-${currentIndex * 100}%)`;
-    }
+  function updateCarrossel() {
+    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
 
-    prevBtn.addEventListener('click', () => {
-      currentIndex = (currentIndex > 0) ? currentIndex - 1 : slideItems.length - 1;
-      updateCarrossel();
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex > 0) ? currentIndex - 1 : slideItems.length - 1;
+    updateCarrossel();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex < slideItems.length - 1) ? currentIndex + 1 : 0;
+    updateCarrossel();
+  });
+
+  setInterval(() => {
+    currentIndex = (currentIndex < slideItems.length - 1) ? currentIndex + 1 : 0;
+    updateCarrossel();
+  }, 5000);
+
+  // Contador
+  const inicio = new Date("2024-03-20T00:00:00");
+
+  function atualizarContador() {
+    const agora = new Date();
+    const diff = agora - inicio;
+    const diasTotal = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const anos = Math.floor(diasTotal / 365);
+    const meses = Math.floor((diasTotal % 365) / 30);
+    const dias = (diasTotal % 365) % 30;
+
+    document.getElementById("contador").innerHTML = 
+      `${anos > 0 ? anos + ' ano' + (anos > 1 ? 's' : '') + ', ' : ''}
+       ${meses > 0 ? meses + ' mês' + (meses > 1 ? 'es' : '') + ' e ' : ''}
+       ${dias} dia${dias !== 1 ? 's' : ''} juntos ❤️`;
+  }
+
+  atualizarContador();
+  setInterval(atualizarContador, 86400000); // Atualiza a cada dia
+
+  // Música
+  const musica = document.getElementById('musica');
+  musica.volume = 0.7;
+
+  document.addEventListener('click', () => {
+    musica.play().catch(() => {
+      console.log("Autoplay bloqueado");
     });
-
-    nextBtn.addEventListener('click', () => {
-      currentIndex = (currentIndex < slideItems.length - 1) ? currentIndex + 1 : 0;
-      updateCarrossel();
-    });
-
-    setInterval(() => {
-      currentIndex = (currentIndex < slideItems.length - 1) ? currentIndex + 1 : 0;
-      updateCarrossel();
-    }, 5000);
-
-    // Contador
-    const inicio = new Date("2024-03-20T00:00:00");
-
-    function atualizarContador() {
-      const agora = new Date();
-      const diff = agora - inicio;
-      const diasTotal = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const anos = Math.floor(diasTotal / 365);
-      const meses = Math.floor((diasTotal % 365) / 30);
-      const dias = (diasTotal % 365) % 30;
-
-      document.getElementById("contador").innerHTML = 
-        `${anos > 0 ? anos + ' ano' + (anos > 1 ? 's' : '') + ', ' : ''}
-         ${meses > 0 ? meses + ' mês' + (meses > 1 ? 'es' : '') + ' e ' : ''}
-         ${dias} dia${dias !== 1 ? 's' : ''} juntos ❤️`;
-    }
-
-    atualizarContador();
-    setInterval(atualizarContador, 86400000); // Atualiza a cada dia
-
-    // Música
-    const musica = document.getElementById('musica');
-    musica.volume = 0.7;
-
-    document.addEventListener('click', () => {
-      musica.play().catch(() => {
-        console.log("Autoplay bloqueado");
-      });
-    }, { once: true });
-  </script>
+  }, { once: true });
+</script>
 
 </body>
 </html>
