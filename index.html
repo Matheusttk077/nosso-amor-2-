@@ -2,199 +2,60 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nosso Amor 💖</title>
+  <title>Teste Imagens</title>
   <style>
-    body {
-      background-color: #fff0f5;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 20px;
-      margin: 0;
-      color: #5e2a42;
-    }
-
-    h1 {
-      color: #c71585;
-      font-size: 2.5em;
-      margin-bottom: 5px;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-    }
-
     .carrossel {
-      position: relative;
-      max-width: 400px;
+      width: 300px;
       margin: 20px auto;
+      border: 2px solid #c71585;
+      border-radius: 10px;
       overflow: hidden;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
-
     .slides {
       display: flex;
       transition: transform 0.5s ease;
+      width: 600px; /* 2 imagens * 300px cada */
     }
-
     .slide {
-      min-width: 100%;
+      min-width: 300px;
     }
-
-    .slide img {
+    img {
       width: 100%;
       display: block;
-      border-radius: 15px;
-    }
-
-    .controles {
-      display: flex;
-      justify-content: center;
-      margin: 10px 0;
-      gap: 15px;
-    }
-
-    .controles button {
-      background: #c71585;
-      color: white;
-      border: none;
-      padding: 8px 20px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 14px;
-      transition: background 0.3s;
-    }
-
-    .controles button:hover {
-      background: #9b2c5a;
-    }
-
-    #contador {
-      font-size: 1.3em;
-      margin: 15px 0;
-      color: #9b2c5a;
-      font-weight: bold;
-    }
-
-    .mensagem {
-      font-size: 1.2em;
-      margin: 20px 10px;
-      color: #7d3c5c;
-      line-height: 1.6;
-      font-style: italic;
-    }
-
-    .player {
-      max-width: 300px;
-      margin: 25px auto;
-      border-radius: 10px;
-      overflow: hidden;
-      background: #f8d7e8;
-      padding: 10px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    }
-
-    .player p {
-      margin: 5px 0;
-      color: #c71585;
-      font-size: 0.9em;
     }
   </style>
 </head>
 <body>
-  <h1>Nosso Amor 💕</h1>
+  <h1>Teste Imagens</h1>
 
   <div class="carrossel">
-    <div class="slides">
-      <div class="slide">
-        <img
-          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgdmlld0JveD0iMCAwIDQwMCAyNTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iI2Y4ZDNlNSIvPgogICAgPHRleHQgeD0iMjAwIiB5PSIxMjUiIGZvbnQtc2l6ZT0iNjAiIiBmb250LWZhbWlseT0iQXJpYWwiIGZpbGw9IiNjNzE1ODUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkNhcmVjw6NvPC90ZXh0Pgo8L3N2Zz4="
-          alt="Coração Rosa"
-        />
-      </div>
-      <div class="slide">
-        <img
-          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgdmlld0JveD0iMCAwIDQwMCAyNTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iI2YwMDAwMCIvPgogICAgPHRleHQgeD0iMjAwIiB5PSIxMjUiIGZvbnQtc2l6ZT0iNjAiIiBmb250LWZhbWlseT0iQXJpYWwiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlZpdGE8L3RleHQ+Cjwvc3ZnPg=="
-          alt="Coração Vermelho"
-        />
-      </div>
+    <div class="slides" id="slides">
+      <div class="slide"><img src="https://via.placeholder.com/300x200/ff69b4/000000?text=Imagem+1" alt="Imagem 1"></div>
+      <div class="slide"><img src="https://via.placeholder.com/300x200/8b0000/ffffff?text=Imagem+2" alt="Imagem 2"></div>
     </div>
   </div>
 
-  <div class="controles">
-    <button id="prevBtn">← Anterior</button>
-    <button id="nextBtn">Próxima →</button>
-  </div>
-
-  <div id="contador">Carregando...</div>
-
-  <div class="mensagem">
-    "O amor não se vê com os olhos, mas com o coração. Cada dia ao seu lado é um presente."
-  </div>
-
-  <div class="player">
-    <audio id="musica" controls>
-      <source src="musica.mp3" type="audio/mpeg" />
-      Seu navegador não suporta áudio.
-    </audio>
-    <p>Velha Infância - Tribalistas</p>
-  </div>
+  <button onclick="prev()">Anterior</button>
+  <button onclick="next()">Próxima</button>
 
   <script>
-    const slides = document.querySelector('.slides');
-    const slideItems = document.querySelectorAll('.slide');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
     let currentIndex = 0;
+    const slides = document.getElementById('slides');
+    const totalSlides = 2;
 
-    function updateCarrossel() {
-      slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+    function updateSlide() {
+      slides.style.transform = `translateX(-${currentIndex * 300}px)`;
     }
 
-    prevBtn.addEventListener('click', () => {
-      currentIndex = currentIndex > 0 ? currentIndex - 1 : slideItems.length - 1;
-      updateCarrossel();
-    });
-
-    nextBtn.addEventListener('click', () => {
-      currentIndex = currentIndex < slideItems.length - 1 ? currentIndex + 1 : 0;
-      updateCarrossel();
-    });
-
-    setInterval(() => {
-      currentIndex = currentIndex < slideItems.length - 1 ? currentIndex + 1 : 0;
-      updateCarrossel();
-    }, 5000);
-
-    // Contador
-    const inicio = new Date('2024-03-20T00:00:00');
-
-    function atualizarContador() {
-      const agora = new Date();
-      const diff = agora - inicio;
-
-      const diasTotal = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const anos = Math.floor(diasTotal / 365);
-      const meses = Math.floor((diasTotal % 365) / 30);
-      const dias = (diasTotal % 365) % 30;
-
-      document.getElementById(
-        'contador'
-      ).innerHTML = `${anos > 0 ? anos + ' ano' + (anos > 1 ? 's' : '') + ', ' : ''}${meses > 0 ? meses + ' mês' + (meses > 1 ? 'es' : '') + ' e ' : ''}${dias} dia${dias > 1 ? 's' : ''} juntos ❤️`;
+    function prev() {
+      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      updateSlide();
     }
 
-    atualizarContador();
-    setInterval(atualizarContador, 86400000);
-
-    // Música
-    const musica = document.getElementById('musica');
-    musica.volume = 0.7;
-
-    document.addEventListener(
-      'click',
-      () => {
-        musica.play().catch(() => console.log('Autoplay bloqueado'));
-      },
-      { once: true }
-    );
+    function next() {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      updateSlide();
+    }
   </script>
 </body>
 </html>
