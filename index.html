@@ -78,11 +78,16 @@
 
     /* Mensagem */
     .mensagem {
-      font-size: 1.2em;
+      font-size: 1.1em;
       margin: 20px 10px;
       color: #7d3c5c;
       line-height: 1.6;
-      font-style: italic;
+      font-style: normal;
+      white-space: pre-wrap; /* mantém quebras de linha */
+      text-align: left;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     /* Player */
@@ -100,6 +105,7 @@
       margin: 5px 0;
       color: #c71585;
       font-size: 0.9em;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -133,7 +139,7 @@
       <source src="https://matheusttk077.github.io/nosso-amor-2-/ssstik.io_1749589596664.mp3" type="audio/mpeg">
       Seu navegador não suporta áudio.
     </audio>
-    <p>VELHA INFANCIA...</p>
+    <p>VELHA INFÂNCIA ❤️</p>
   </div>
 
   <!-- Contador -->
@@ -141,8 +147,9 @@
 
   <!-- Mensagem -->
   <div class="mensagem">
-    "OIIEEEE MINHA AMORZINHA FIZ ISSO COM TODO AMOR DO MUNDO, AGORA SÃO EXATAMENTE 4:14 DA MANHA KSKSKSKSKSK....
-    Vidahh
+OIIEE MINHA GATINHA FIZ COM MUITO AMOR E DEDICAÇÃO PRA TI AGORA SÃO 4:14 DA MANHÃ DIA 11/06 E EU ESTOU AQUI ACORDADO KSSKSKSKSK FIZ UM TEXTINHO E ESSE SITE PRA VOCÊ.
+
+Vidahh
 eu sei que você esperava um presente…
 E eu juro, eu comprei com todo carinho do mundo. Mas acabei caindo num golpe…
 Fui roubado.
@@ -167,7 +174,7 @@ Mas espero que esse texto chegue aí no seu coração e te abrace um pouquinho p
 Porque presente nenhum do mundo vale mais que esse amor que eu sinto por você.
 
 Feliz Dia dos Namorados, minha bebezinha.
-Te amo mais do que palavras conseguem dar conta. Sempre. FELIZ DIA DAS NAMORADAS❤️🫵🏼🤟🏼
+Eu Te amo mais do que palavras conseguem dar conta. FELIZ DIA DAS NAMORADAS PRA VC MINHA GATA ❤️🤟🏼🫵🏼
   </div>
 
 <script>
@@ -215,18 +222,4 @@ Te amo mais do que palavras conseguem dar conta. Sempre. FELIZ DIA DAS NAMORADAS
   }
 
   atualizarContador();
-  setInterval(atualizarContador, 86400000); // Atualiza a cada dia
-
-  // Música
-  const musica = document.getElementById('musica');
-  musica.volume = 0.7;
-
-  document.addEventListener('click', () => {
-    musica.play().catch(() => {
-      console.log("Autoplay bloqueado");
-    });
-  }, { once: true });
-</script>
-
-</body>
-</html>
+  setInterval(atualizarContador, 864
