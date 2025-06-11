@@ -33,15 +33,12 @@
       overflow: hidden;
       box-shadow: 0 5px 15px rgba(0,0,0,0.2);
       position: relative;
+      background-color: #f8d7e8;
     }
     .foto-container img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.3s;
-    }
-    .foto-container img:hover {
-      transform: scale(1.03);
     }
     #contador {
       font-size: 1.2em;
@@ -55,12 +52,10 @@
       color: #9b2c5a;
       line-height: 1.5;
     }
-    .player {
+    .audio-container {
       width: 100%;
       max-width: 300px;
       margin: 30px auto;
-      border-radius: 12px;
-      overflow: hidden;
     }
     .carregando {
       position: absolute;
@@ -75,20 +70,20 @@
   <h1>Nosso Amor 💕</h1>
 
   <div class="fotos">
-    <!-- FOTO 1 - Versão alternativa com backup -->
+    <!-- FOTO 1 - Agora com upload direto no GitHub -->
     <div class="foto-container">
-      <img src="https://i.imgur.com/4RkxDC3.jpeg" 
+      <img src="foto1.jpg" 
            alt="Nosso momento especial" 
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'">
-      <div class="carregando" id="loading1">Carregando foto...</div>
+           onerror="this.style.display='none';document.getElementById('loading1').textContent='Foto especial (adicione foto1.jpg ao seu repositório)'">
+      <div class="carregando" id="loading1">Carregando foto especial...</div>
     </div>
 
-    <!-- FOTO 2 - Versão alternativa com backup -->
+    <!-- FOTO 2 - Agora com upload direto no GitHub -->
     <div class="foto-container">
-      <img src="https://i.imgur.com/ylKoWQU.jpeg" 
+      <img src="foto2.jpg" 
            alt="Nosso amor" 
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'">
-      <div class="carregando" id="loading2">Carregando foto...</div>
+           onerror="this.style.display='none';document.getElementById('loading2').textContent='Foto do casal (adicione foto2.jpg ao seu repositório)'">
+      <div class="carregando" id="loading2">Carregando nossa foto...</div>
     </div>
   </div>
 
@@ -96,13 +91,13 @@
 
   <div class="mensagem">"O verdadeiro amor nunca se desgasta. Quanto mais se dá, mais se tem."</div>
 
-  <div class="player">
-    <iframe width="100%" height="80" 
-      src="https://www.youtube.com/embed/iyJDuJggiEM?autoplay=1&mute=0&loop=1&playlist=iyJDuJggiEM" 
-      frameborder="0" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-      allowfullscreen>
-    </iframe>
+  <!-- Áudio em MP3 - Solução definitiva -->
+  <div class="audio-container">
+    <audio id="musica" autoplay loop controls style="width:100%">
+      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+      Seu navegador não suporta áudio HTML5.
+    </audio>
+    <p style="font-size:0.8em;color:#c71585">Velha Infância - Tribalistas</p>
   </div>
 
   <script>
@@ -126,22 +121,38 @@
 
     // Garante que as imagens apareçam
     document.addEventListener('DOMContentLoaded', function() {
-      // Esconde os placeholders quando as fotos carregam
-      const img1 = document.querySelector('.fotos img:nth-child(1)');
-      const img2 = document.querySelector('.fotos img:nth-child(2)');
+      // Tocar música automaticamente (com fallback)
+      const musica = document.getElementById('musica');
+      musica.volume = 0.5; // Volume médio
       
-      img1.onload = function() {
-        document.getElementById('loading1').style.display = 'none';
-      };
-      img2.onload = function() {
-        document.getElementById('loading2').style.display = 'none';
-      };
+      // Tentativa de play automático (com tratamento de erro)
+      const playPromise = musica.play();
       
-      // Se não carregar em 3 segundos, mostra mensagem
-      setTimeout(() => {
-        if (!img1.complete) document.getElementById('loading1').textContent = 'Foto não carregada';
-        if (!img2.complete) document.getElementById('loading2').textContent = 'Foto não carregada';
-      }, 3000);
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          // Mostra mensagem se o autoplay falhar
+          musica.controls = true;
+          document.querySelector('.audio-container p').innerHTML = 
+            "Toque no botão play para iniciar a música ♫";
+        });
+      }
+      
+      // Monitora carregamento das fotos
+      const img1 = document.querySelector('.fotos img:nth-of-type(1)');
+      const img2 = document.querySelector('.fotos img:nth-of-type(2)');
+      
+      [img1, img2].forEach((img, index) => {
+        if (img.complete) {
+          document.getElementById(`loading${index+1}`).style.display = 'none';
+        } else {
+          img.onload = function() {
+            document.getElementById(`loading${index+1}`).style.display = 'none';
+          };
+          img.onerror = function() {
+            document.getElementById(`loading${index+1}`).style.color = '#ff0000';
+          };
+        }
+      });
     });
 
     // Atualiza o contador imediatamente e depois a cada hora
