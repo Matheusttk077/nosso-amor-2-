@@ -13,14 +13,14 @@
       margin: 0;
       color: #5e2a42;
     }
-    
+
     h1 {
       color: #c71585;
       font-size: 2.5em;
       margin-bottom: 5px;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     }
-    
+
     .carrossel {
       position: relative;
       max-width: 400px;
@@ -29,29 +29,29 @@
       border-radius: 15px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
-    
+
     .slides {
       display: flex;
       transition: transform 0.5s ease;
     }
-    
+
     .slide {
       min-width: 100%;
     }
-    
+
     .slide img {
       width: 100%;
       display: block;
       border-radius: 15px;
     }
-    
+
     .controles {
       display: flex;
       justify-content: center;
       margin: 10px 0;
       gap: 15px;
     }
-    
+
     .controles button {
       background: #c71585;
       color: white;
@@ -62,18 +62,18 @@
       font-size: 14px;
       transition: background 0.3s;
     }
-    
+
     .controles button:hover {
       background: #9b2c5a;
     }
-    
+
     #contador {
       font-size: 1.3em;
       margin: 15px 0;
       color: #9b2c5a;
       font-weight: bold;
     }
-    
+
     .mensagem {
       font-size: 1.2em;
       margin: 20px 10px;
@@ -81,7 +81,7 @@
       line-height: 1.6;
       font-style: italic;
     }
-    
+
     .player {
       max-width: 300px;
       margin: 25px auto;
@@ -91,7 +91,7 @@
       padding: 10px;
       box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     }
-    
+
     .player p {
       margin: 5px 0;
       color: #c71585;
@@ -102,30 +102,30 @@
 <body>
 
   <h1>Nosso Amor 💕</h1>
-  
-  <!-- Carrossel de Fotos -->
+
+  <!-- Carrossel de Fotos com imagens base64 -->
   <div class="carrossel">
     <div class="slides">
       <div class="slide">
-        <img src="https://via.placeholder.com/400x250.png?text=Nosso+Momento+1" alt="Nosso momento especial">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEhUQEhMVFRUVFRUVFRUVFRUVFRUVFhUXFhUVFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OGhAQGy0lICUtLS8tLy0tLS8vLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAJ8BPgMBIgACEQEDEQH/xAAcAAACAwEBAQEAAAAAAAAAAAAEBQADBgECBwj/xABGEAABAwIEAwUFBQgJBwUBAAABAgMRACEEBRIxQVFhBhMicYGRobHwFCNS0eEjUmJy8RUjksLhBxY0U3OCkrPC4hYkY5L/xAAaAQACAwEBAAAAAAAAAAAAAAAAAQIDBAUG/8QANxEAAgIBAwIEBAQHAAAAAAAAAAECEQMSITEEQVFxEyJhobHR8BMyQmJScpHB0SNDgrL/2gAMAwEAAhEDEQA/APdJxIm0Nc8jLDwK5ObB2N+UY52AYmlZWBnkIDzA58wJ28zUuATu/5kGwod3NBmpSMv6Vzp1QUyKgHNiD3h+vubUD4Aqh9uacS6VZSlpKNSOdoMjcAf/2Q==" alt="Imagem 1">
       </div>
       <div class="slide">
-        <img src="https://via.placeholder.com/400x250.png?text=Nosso+Momento+2" alt="Nossa aventura">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAPDw8PEA8NDw8NDQ8NDQ0NDQ8NDQ0NFREWFhURExUYHSggGBolHRUVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OGhAQGi0lICUtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAPgA5QMBIgACEQEDEQH/xAAcAAACAwEBAQEAAAAAAAAAAAAEBQADBgIBBwj/xABBEAACAQIDAwIDBQcJBAMAAAABAgADEQQSITEFQVEGEyJhcYGRBxRCobHB0fAzQlJicpLh8RUzYmLC8RU0Q1Rj/8QAGAEBAQEBAQAAAAAAAAAAAAAAAAECAwT/xAAoEQEAAQIEBAUFAAAAAAAAAAAAAQIDEQQSITEFEyIyQVFhkaGxwdH/2gAMAwEAAhEDEQA/APFqR9QUh+KrVS7vckhZCl2gxtLe9uW8khyflzsmgsZPImY1OV0sR6TkNpU+dVTpRxOICB89C2tADj15GfvnvzW9TepahIsEyNdCyQebGVGFHXnfuTwK2ZgDt2MdwJp3YQIDIGenmnmKozk2AxJNa2zg2WhjzGnUwYPXcEEc81DHiZxIs8r9eqkI1M0yoDgBZ9D1FSgTqbN8Ra6sLQu9SvQDs7b6Txg4K6p08EjTYMZkV7cTYQK3qJ89gHnvW0Akf8ATbv2CgRrsxrKXHcY46k0VEf//Z" alt="Imagem 2">
       </div>
     </div>
   </div>
-  
+
   <div class="controles">
     <button id="prevBtn">← Anterior</button>
     <button id="nextBtn">Próxima →</button>
   </div>
-  
+
   <div id="contador">Carregando...</div>
-  
+
   <div class="mensagem">
     "O amor não se vê com os olhos, mas com o coração. Cada dia ao seu lado é um presente."
   </div>
-  
+
   <div class="player">
     <audio id="musica" controls>
       <source src="musica.mp3" type="audio/mpeg">
@@ -141,21 +141,21 @@
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
   let currentIndex = 0;
-  
+
   function updateCarrossel() {
     slides.style.transform = `translateX(-${currentIndex * 100}%)`;
   }
-  
+
   prevBtn.addEventListener('click', () => {
     currentIndex = (currentIndex > 0) ? currentIndex - 1 : slideItems.length - 1;
     updateCarrossel();
   });
-  
+
   nextBtn.addEventListener('click', () => {
     currentIndex = (currentIndex < slideItems.length - 1) ? currentIndex + 1 : 0;
     updateCarrossel();
   });
-  
+
   setInterval(() => {
     currentIndex = (currentIndex < slideItems.length - 1) ? currentIndex + 1 : 0;
     updateCarrossel();
@@ -163,30 +163,30 @@
 
   // ========== CONTADOR ==========
   const inicio = new Date("2024-03-20T00:00:00");
-  
+
   function atualizarContador() {
     const agora = new Date();
-    const diff = Math.floor(agora - inicio);
-    
+    const diff = agora - inicio;
+
     const diasTotal = Math.floor(diff / (1000 * 60 * 60 * 24));
     const anos = Math.floor(diasTotal / 365);
     const meses = Math.floor((diasTotal % 365) / 30);
-    const dias = Math.floor((diasTotal % 365) % 30);
-    
-    document.getElementById("contador").innerHTML = 
+    const dias = (diasTotal % 365) % 30;
+
+    document.getElementById("contador").innerHTML =
       `${anos > 0 ? anos + ' ano' + (anos > 1 ? 's' : '') + ', ' : ''}
        ${meses > 0 ? meses + ' mês' + (meses > 1 ? 'es' : '') + ' e ' : ''}
        ${dias} dia${dias > 1 ? 's' : ''} juntos ❤️`;
   }
-  
+
   atualizarContador();
-  setInterval(atualizarContador, 86400000); // Atualiza diariamente
+  setInterval(atualizarContador, 86400000);
 
   // ========== MÚSICA ==========
   const musica = document.getElementById('musica');
   musica.volume = 0.7;
-  
-  document.addEventListener('click', function() {
+
+  document.addEventListener('click', function () {
     musica.play().catch(e => console.log("Autoplay bloqueado"));
   }, { once: true });
 </script>
