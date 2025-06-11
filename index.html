@@ -17,41 +17,57 @@
       color: #c71585;
       font-size: 2.2em;
       margin-bottom: 10px;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     }
     .fotos {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 15px;
-      margin: 20px auto;
-      max-width: 95%;
+      gap: 20px;
+      margin: 25px auto;
     }
-    .fotos img {
+    .foto-container {
       width: 100%;
-      max-width: 400px;
+      max-width: 350px;
+      height: 250px;
       border-radius: 15px;
+      overflow: hidden;
       box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      border: 3px solid white;
+      position: relative;
+    }
+    .foto-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .foto-container img:hover {
+      transform: scale(1.03);
     }
     #contador {
       font-size: 1.2em;
-      margin: 15px 0;
-      color: #7d3c5c;
+      margin: 20px 0;
+      color: #9b2c5a;
       font-weight: bold;
     }
     .mensagem {
       font-size: 1.3em;
-      margin: 20px 10px;
+      margin: 25px 10px;
       color: #9b2c5a;
-      line-height: 1.4;
+      line-height: 1.5;
     }
     .player {
       width: 100%;
       max-width: 300px;
-      margin: 25px auto;
+      margin: 30px auto;
       border-radius: 12px;
       overflow: hidden;
+    }
+    .carregando {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #c71585;
     }
   </style>
 </head>
@@ -59,13 +75,26 @@
   <h1>Nosso Amor 💕</h1>
 
   <div class="fotos">
-    <img src="https://i.imgur.com/4RkxDC3.jpeg" alt="Nossa foto especial" loading="lazy">
-    <img src="https://i.imgur.com/ylKoWQU.jpeg" alt="Nosso momento" loading="lazy">
+    <!-- FOTO 1 - Versão alternativa com backup -->
+    <div class="foto-container">
+      <img src="https://i.imgur.com/4RkxDC3.jpeg" 
+           alt="Nosso momento especial" 
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'">
+      <div class="carregando" id="loading1">Carregando foto...</div>
+    </div>
+
+    <!-- FOTO 2 - Versão alternativa com backup -->
+    <div class="foto-container">
+      <img src="https://i.imgur.com/ylKoWQU.jpeg" 
+           alt="Nosso amor" 
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'">
+      <div class="carregando" id="loading2">Carregando foto...</div>
+    </div>
   </div>
 
   <div id="contador">Carregando...</div>
 
-  <div class="mensagem">"O amor não se vê com os olhos, mas com o coração."<br>- William Shakespeare</div>
+  <div class="mensagem">"O verdadeiro amor nunca se desgasta. Quanto mais se dá, mais se tem."</div>
 
   <div class="player">
     <iframe width="100%" height="80" 
@@ -95,21 +124,29 @@
          ${dias} dia${dias > 1 ? 's' : ''} juntos ❤️`;
     }
 
-    // Atualiza imediatamente e depois a cada hora
+    // Garante que as imagens apareçam
+    document.addEventListener('DOMContentLoaded', function() {
+      // Esconde os placeholders quando as fotos carregam
+      const img1 = document.querySelector('.fotos img:nth-child(1)');
+      const img2 = document.querySelector('.fotos img:nth-child(2)');
+      
+      img1.onload = function() {
+        document.getElementById('loading1').style.display = 'none';
+      };
+      img2.onload = function() {
+        document.getElementById('loading2').style.display = 'none';
+      };
+      
+      // Se não carregar em 3 segundos, mostra mensagem
+      setTimeout(() => {
+        if (!img1.complete) document.getElementById('loading1').textContent = 'Foto não carregada';
+        if (!img2.complete) document.getElementById('loading2').textContent = 'Foto não carregada';
+      }, 3000);
+    });
+
+    // Atualiza o contador imediatamente e depois a cada hora
     atualizarContador();
     setInterval(atualizarContador, 3600000);
-
-    // Garante que as imagens carreguem
-    document.addEventListener('DOMContentLoaded', function() {
-      const images = document.querySelectorAll('img');
-      images.forEach(img => {
-        if (!img.complete) {
-          img.onerror = function() {
-            this.style.display = 'none';
-          };
-        }
-      });
-    });
   </script>
 </body>
 </html>
