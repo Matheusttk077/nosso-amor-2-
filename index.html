@@ -21,7 +21,6 @@
       text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     }
 
-    /* Carrossel */
     .carrossel {
       position: relative;
       max-width: 400px;
@@ -68,7 +67,6 @@
       background: #9b2c5a;
     }
 
-    /* Contador */
     #contador {
       font-size: 1.3em;
       margin: 15px 0;
@@ -76,24 +74,17 @@
       font-weight: bold;
     }
 
-    /* Mensagem */
     .mensagem {
-      font-size: 1.1em;
+      font-size: 1.2em;
       margin: 20px 10px;
       color: #7d3c5c;
       line-height: 1.6;
-      font-style: normal;
-      white-space: pre-wrap; /* mantém quebras de linha */
-      text-align: left;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
+      font-style: italic;
     }
 
-    /* Player */
     .player {
       max-width: 300px;
-      margin: 25px auto;
+      margin: 25px auto 15px;
       border-radius: 10px;
       overflow: hidden;
       background: #f8d7e8;
@@ -105,7 +96,23 @@
       margin: 5px 0;
       color: #c71585;
       font-size: 0.9em;
-      font-weight: bold;
+    }
+
+    .emoji {
+      position: fixed;
+      top: -50px;
+      font-size: 24px;
+      animation: cair linear infinite;
+      z-index: 999;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    @keyframes cair {
+      to {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
     }
   </style>
 </head>
@@ -113,18 +120,24 @@
 
   <h1>Nosso Amor 💕</h1>
 
+  <!-- Música -->
+  <div class="player">
+    <audio id="musica" controls>
+      <source src="https://media.vocaroo.com/mp3/15vqHgy5ypNs" type="audio/mpeg">
+      Seu navegador não suporta áudio.
+    </audio>
+    <p>🎵 Velha Infância</p>
+  </div>
+
+  <!-- Contador -->
+  <div id="contador"></div>
+
   <!-- Carrossel -->
   <div class="carrossel">
     <div class="slides">
       <div class="slide"><img src="https://i.imgur.com/MFHL61N.webp" alt="Foto 1"></div>
       <div class="slide"><img src="https://i.imgur.com/dTYvCfS.webp" alt="Foto 2"></div>
       <div class="slide"><img src="https://i.imgur.com/IBc5cZR.webp" alt="Foto 3"></div>
-      <div class="slide"><img src="https://i.imgur.com/VGBZDig.webp" alt="Foto 4"></div>
-      <div class="slide"><img src="https://i.imgur.com/hFeO5Pb.webp" alt="Foto 5"></div>
-      <div class="slide"><img src="https://i.imgur.com/G03OsZ8.webp" alt="Foto 6"></div>
-      <div class="slide"><img src="https://i.imgur.com/DrtLcOs.webp" alt="Foto 7"></div>
-      <div class="slide"><img src="https://i.imgur.com/GSIBoKu.webp" alt="Foto 8"></div>
-      <div class="slide"><img src="https://i.imgur.com/tEcWK9Q.webp" alt="Foto 9"></div>
     </div>
   </div>
 
@@ -133,93 +146,108 @@
     <button id="nextBtn">Próxima →</button>
   </div>
 
-  <!-- Player de Música -->
-  <div class="player">
-    <audio id="musica" controls>
-      <source src="https://matheusttk077.github.io/nosso-amor-2-/ssstik.io_1749589596664.mp3" type="audio/mpeg">
-      Seu navegador não suporta áudio.
-    </audio>
-    <p>VELHA INFÂNCIA ❤️</p>
-  </div>
-
-  <!-- Contador -->
-  <div id="contador">Carregando...</div>
-
   <!-- Mensagem -->
   <div class="mensagem">
-OIIEE MINHA GATINHA FIZ COM MUITO AMOR E DEDICAÇÃO PRA TI AGORA SÃO 4:14 DA MANHÃ DIA 11/06 E EU ESTOU AQUI ACORDADO KSSKSKSKSK FIZ UM TEXTINHO E ESSE SITE PRA VOCÊ.
-
-Vidahh
-eu sei que você esperava um presente…
-E eu juro, eu comprei com todo carinho do mundo. Mas acabei caindo num golpe…
-Fui roubado.
-Mas quer saber?
-Isso nem chega perto do verdadeiro roubo da minha vida:
-**quando você roubou meu coração.**
-Desde que você entrou na minha vida, tudo ficou diferente.
-Você com esse jeito só seu.
-Minha Morena linda, baixinha charmosa, com esse olhar que me desmonta e esse cheiro que poderia ser engarrafado de tão bom q é…
-Você tem 1,57 de pura beleza e intensidade.
-Uma mistura de calmaria e bagunça boa que eu não sabia que precisava, até te encontrar.🫵🏼
-Te dei vários apelidinhos, né kkkk?
-Princesa, sunshine, vidah, bebezinha, projeto de anão (com todo amor do mundo kkk).
-E cada apelido carrega um pedacinho do que você é pra mim.
-Uma parte linda da minha vida.
-Eu não sou o cara mais perfeito do mundo, mas o que eu sinto por você é de verdade.
-Eu te amooo muitooo gata.
-E morro de medo de te perder, de verdade mesmo. Porque você é mais que minha namorada.
-É minha parceira, meu lugar seguro, minha melhor amiga, meu amorzinho.
-Desculpa pelo presente que não chegou...
-Mas espero que esse texto chegue aí no seu coração e te abrace um pouquinho por mim.
-Porque presente nenhum do mundo vale mais que esse amor que eu sinto por você.
-
-Feliz Dia dos Namorados, minha bebezinha.
-Eu Te amo mais do que palavras conseguem dar conta. FELIZ DIA DAS NAMORADAS PRA VC MINHA GATA ❤️🤟🏼🫵🏼
+    OIIEE MINHA GATINHA FIZ COM MUITO AMOR E DEDICAÇÃO PRA TI AGORA SÃO 4:14 DA MANHÃ DIA 11/06 E EU ESTOU AQUI ACORDADO KSSKSKSKSK FIZ UM TEXTINHO E ESSE SITE PRA VOCÊ.<br><br>
+    Vidahh<br>
+    eu sei que você esperava um presente…<br>
+    E eu juro, eu comprei com todo carinho do mundo. Mas acabei caindo num golpe…<br>
+    Fui roubado.<br><br>
+    Mas quer saber?<br>
+    Isso nem chega perto do verdadeiro roubo da minha vida:<br>
+    <strong>quando você roubou meu coração.</strong><br><br>
+    Desde que você entrou na minha vida, tudo ficou diferente.<br>
+    Você com esse jeito só seu.<br>
+    Minha Morena linda, baixinha charmosa, com esse olhar que me desmonta e esse cheiro que poderia ser engarrafado de tão bom q é…<br>
+    Você tem 1,57 de pura beleza e intensidade.<br>
+    Uma mistura de calmaria e bagunça boa que eu não sabia que precisava, até te encontrar.🫵🏼<br><br>
+    Te dei vários apelidinhos, né kkkk?<br>
+    Princesa, sunshine, vidah, bebezinha, projeto de anão (com todo amor do mundo kkk).<br>
+    E cada apelido carrega um pedacinho do que você é pra mim.<br>
+    Uma parte linda da minha vida.<br><br>
+    Eu não sou o cara mais perfeito do mundo, mas o que eu sinto por você é de verdade.<br>
+    Eu te amooo muitooo gata.<br>
+    E morro de medo de te perder, de verdade mesmo. Porque você é mais que minha namorada.<br>
+    É minha parceira, meu lugar seguro, minha melhor amiga, meu amorzinho.<br><br>
+    Desculpa pelo presente que não chegou...<br>
+    Mas espero que esse texto chegue aí no seu coração e te abrace um pouquinho por mim.<br>
+    Porque presente nenhum do mundo vale mais que esse amor que eu sinto por você.<br><br>
+    Feliz Dia dos Namorados, minha bebezinha.<br>
+    Eu Te amo mais do que palavras conseguem dar conta. FELIZ DIA DAS NAMORADAS PRA VC MINHA GATA ❤️🤟🏼🫵🏼
   </div>
 
-<script>
-  // Carrossel
-  const slides = document.querySelector('.slides');
-  const slideItems = document.querySelectorAll('.slide');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  let currentIndex = 0;
+  <!-- Scripts -->
+  <script>
+    // Carrossel
+    const slides = document.querySelector('.slides');
+    const slideItems = document.querySelectorAll('.slide');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let currentIndex = 0;
 
-  function updateCarrossel() {
-    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
-  }
+    function updateCarrossel() {
+      slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
 
-  prevBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex > 0) ? currentIndex - 1 : slideItems.length - 1;
-    updateCarrossel();
-  });
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex > 0) ? currentIndex - 1 : slideItems.length - 1;
+      updateCarrossel();
+    });
 
-  nextBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex < slideItems.length - 1) ? currentIndex + 1 : 0;
-    updateCarrossel();
-  });
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex < slideItems.length - 1) ? currentIndex + 1 : 0;
+      updateCarrossel();
+    });
 
-  setInterval(() => {
-    currentIndex = (currentIndex < slideItems.length - 1) ? currentIndex + 1 : 0;
-    updateCarrossel();
-  }, 5000);
+    setInterval(() => {
+      currentIndex = (currentIndex < slideItems.length - 1) ? currentIndex + 1 : 0;
+      updateCarrossel();
+    }, 5000);
 
-  // Contador
-  const inicio = new Date("2024-03-20T00:00:00");
+    // Emojis caindo
+    const emojis = ['❤️', '🥰', '🫵🏼', '🫶', '💙', '🤍'];
 
-  function atualizarContador() {
-    const agora = new Date();
-    const diff = agora - inicio;
-    const diasTotal = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const anos = Math.floor(diasTotal / 365);
-    const meses = Math.floor((diasTotal % 365) / 30);
-    const dias = (diasTotal % 365) % 30;
+    function criarEmoji() {
+      const emoji = document.createElement('div');
+      emoji.classList.add('emoji');
+      emoji.style.left = Math.random() * 100 + 'vw';
+      emoji.style.animationDuration = (Math.random() * 2 + 3) + 's';
+      emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      document.body.appendChild(emoji);
 
-    document.getElementById("contador").innerHTML = 
-      `${anos > 0 ? anos + ' ano' + (anos > 1 ? 's' : '') + ', ' : ''}
-       ${meses > 0 ? meses + ' mês' + (meses > 1 ? 'es' : '') + ' e ' : ''}
-       ${dias} dia${dias !== 1 ? 's' : ''} juntos ❤️`;
-  }
+      setTimeout(() => {
+        emoji.remove();
+      }, 5000);
+    }
 
-  atualizarContador();
-  setInterval(atualizarContador, 864
+    setInterval(criarEmoji, 300);
+
+    // Música autoplay
+    const musica = document.getElementById('musica');
+    musica.volume = 0.7;
+
+    document.addEventListener('click', () => {
+      musica.play().catch(() => {
+        console.log("Autoplay bloqueado");
+      });
+    }, { once: true });
+
+    // Contador
+    const contador = document.getElementById('contador');
+    const dataInicio = new Date('2024-03-20T00:00:00');
+
+    function atualizarContador() {
+      const agora = new Date();
+      const diff = agora - dataInicio;
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const anos = Math.floor(dias / 365);
+      const meses = Math.floor((dias % 365) / 30);
+      const diasRestantes = dias % 30;
+      contador.textContent = `${anos} ano${anos !== 1 ? 's' : ''}, ${meses} mês${meses !== 1 ? 'es' : ''} e ${diasRestantes} dia${diasRestantes !== 1 ? 's' : ''} juntos ❤️`;
+    }
+
+    atualizarContador();
+  </script>
+
+</body>
+</html>
