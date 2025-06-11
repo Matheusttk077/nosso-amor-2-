@@ -2,28 +2,195 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Teste de Imagens Alternativas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nosso Amor 💖</title>
   <style>
     body {
       background-color: #fff0f5;
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       text-align: center;
       padding: 20px;
+      margin: 0;
       color: #5e2a42;
     }
-    img {
-      margin: 10px;
+    h1 {
+      color: #c71585;
+      font-size: 2.5em;
+      margin-bottom: 5px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+    /* Estilo do Carrossel */
+    .carrossel {
+      position: relative;
+      max-width: 400px;
+      margin: 20px auto;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    .slide {
+      min-width: 100%;
+    }
+    .slide img {
+      width: 100%;
+      display: block;
+      border-radius: 15px;
+    }
+    .controles {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0;
+      gap: 15px;
+    }
+    .controles button {
+      background: #c71585;
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+    .controles button:hover {
+      background: #9b2c5a;
+    }
+    /* Contador de Tempo */
+    #contador {
+      font-size: 1.3em;
+      margin: 15px 0;
+      color: #9b2c5a;
+      font-weight: bold;
+    }
+    /* Mensagem Romântica */
+    .mensagem {
+      font-size: 1.2em;
+      margin: 20px 10px;
+      color: #7d3c5c;
+      line-height: 1.6;
+      font-style: italic;
+    }
+    /* Player de Música */
+    .player {
+      max-width: 300px;
+      margin: 25px auto;
       border-radius: 10px;
-      width: 300px;
-      height: auto;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      overflow: hidden;
+      background: #f8d7e8;
+      padding: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    .player p {
+      margin: 5px 0;
+      color: #c71585;
+      font-size: 0.9em;
     }
   </style>
 </head>
 <body>
-  <h1>Teste de Imagens Alternativas</h1>
-  <img src="https://dummyimage.com/400x300/ff69b4/000000.png&text=Imagem+Teste+1" alt="Imagem Teste 1" />
-  <img src="https://dummyimage.com/400x300/008080/ffffff.png&text=Imagem+Teste+2" alt="Imagem Teste 2" />
-  <img src="https://dummyimage.com/400x300/0000ff/ffffff.png&text=Imagem+Teste+3" alt="Imagem Teste 3" />
+
+  <!-- Título Principal -->
+  <h1>Nosso Amor 💕</h1>
+  
+  <!-- Carrossel de Fotos -->
+  <div class="carrossel">
+    <div class="slides">
+      <div class="slide">
+        <img src="https://dummyimage.com/400x300/ff69b4/000000.png&text=Imagem+Teste+1" alt="Imagem Teste 1" />
+      </div>
+      <div class="slide">
+        <img src="https://dummyimage.com/400x300/008080/ffffff.png&text=Imagem+Teste+2" alt="Imagem Teste 2" />
+      </div>
+      <div class="slide">
+        <img src="https://dummyimage.com/400x300/0000ff/ffffff.png&text=Imagem+Teste+3" alt="Imagem Teste 3" />
+      </div>
+    </div>
+  </div>
+  
+  <div class="controles">
+    <button id="prevBtn">← Anterior</button>
+    <button id="nextBtn">Próxima →</button>
+  </div>
+  
+  <!-- Contador de Tempo -->
+  <div id="contador">Carregando...</div>
+  
+  <!-- Mensagem Romântica -->
+  <div class="mensagem">
+    "O amor não se vê com os olhos, mas com o coração. Cada dia ao seu lado é um presente."
+  </div>
+  
+  <!-- Player de Música -->
+  <div class="player">
+    <audio id="musica" controls>
+      <source src="musica.mp3" type="audio/mpeg" />
+      Seu navegador não suporta áudio.
+    </audio>
+    <p>Velha Infância - Tribalistas</p>
+  </div>
+
+<script>
+  // ========== CARROSSEL ==========
+  const slides = document.querySelector('.slides');
+  const slideItems = document.querySelectorAll('.slide');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  let currentIndex = 0;
+  
+  function updateCarrossel() {
+    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+  
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex > 0) ? currentIndex - 1 : slideItems.length - 1;
+    updateCarrossel();
+  });
+  
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex < slideItems.length - 1) ? currentIndex + 1 : 0;
+    updateCarrossel();
+  });
+  
+  // Auto-avanço a cada 5 segundos
+  setInterval(() => {
+    currentIndex = (currentIndex < slideItems.length - 1) ? currentIndex + 1 : 0;
+    updateCarrossel();
+  }, 5000);
+
+  // ========== CONTADOR ==========
+  const inicio = new Date("2024-03-20T00:00:00");
+  
+  function atualizarContador() {
+    const agora = new Date();
+    const diff = Math.floor(agora - inicio);
+    
+    const diasTotal = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const anos = Math.floor(diasTotal / 365);
+    const meses = Math.floor((diasTotal % 365) / 30);
+    const dias = Math.floor((diasTotal % 365) % 30);
+    
+    document.getElementById("contador").innerHTML = 
+      `${anos > 0 ? anos + ' ano' + (anos > 1 ? 's' : '') + ', ' : ''}
+       ${meses > 0 ? meses + ' mês' + (meses > 1 ? 'es' : '') + ' e ' : ''}
+       ${dias} dia${dias > 1 ? 's' : ''} juntos ❤️`;
+  }
+  
+  atualizarContador();
+  setInterval(atualizarContador, 86400000); // Atualiza diariamente
+
+  // ========== MÚSICA ==========
+  const musica = document.getElementById('musica');
+  musica.volume = 0.7;
+  
+  // Tenta reproduzir automaticamente (pode não funcionar em alguns navegadores)
+  document.addEventListener('click', function() {
+    musica.play().catch(e => console.log("Autoplay bloqueado"));
+  }, { once: true });
+</script>
+
 </body>
 </html>
